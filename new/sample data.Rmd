@@ -1,0 +1,49 @@
+---
+title: "Assig 1"
+author: "Eyerusalem Tesfay"
+date: "2025-01-28"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r cars}
+transformation=function(x){
+  cube=x^3
+  sqr=x^2
+  sqrt=x^0.5
+  log=log(x)
+  reciprocal_sqrt=1/sqrt
+  inverse=1/x
+  reciprocal_sqr=1/sqr
+  reciprocal_cube=1/cube
+return(list(x=x,sqr=sqr,cube=cube,sqrt=sqrt,log=log,reciprocal_sqrt=reciprocal_sqrt,inverse=inverse,reciprocal_sqr=reciprocal_sqr,reciprocal_cube=reciprocal_cube ))
+}
+x=rnorm(300,mean = 20,sd=4)  # generating sample data set
+transformed_values<-transformation(x)
+#transformed_values
+par(mar = c(4.8, 2.2, 1.2, 0)) #to arrange margin size around the plots
+par(mfrow=c(3,3))  #to put the plot in 3 rows and 3 columns.
+ #codes to draw histogram from original and transformed values.
+hist(transformed_values$x,main = "Histogram of X",col="skyblue",border="darkblue",xlab="x",ylab="Frequency",density = 40)
+hist(transformed_values$cube,main = "Histogram of (X^3)",col="blue",border="red",xlab = "X cube",ylab = "Frequency",density = 40)
+hist(transformed_values$sqr,main = "Histogram of sqr of X",col="skyblue",border="darkblue",xlab="X sqr",ylab = "Frequency",density = 40)
+hist(transformed_values$log,main = "Histogram of log of X",col="blue",border="red",xlab = "Log x",ylab = "Frequency",density = 40)
+hist(transformed_values$sqrt,main = "Histogram of sqrt of X",col="skyblue",border="darkblue",xlab = "Sqrt of x",ylab = "Frequency",density = 40)
+hist(transformed_values$reciprocal_sqrt,main = "Histogram of 1/sqrt(X)",col="blue",border="red",xlab = "1/sqrt(x)",ylab = "Frequency",density = 40)
+hist(transformed_values$reciprocal_sqr,main ="Histogram of 1/sqr(X)",col="skyblue" ,border="darkblue",xlab = "1/sqr(x)",ylab = "Frequency",density = 40)
+hist(transformed_values$reciprocal_cube,main ="Histogram of 1/(X^3)",col="blue",border="red",xlab = "1/(x^3)",ylab = "Frequency" ,density = 40)
+hist(transformed_values$inverse,main ="Histogram of 1/X" ,col="skyblue",border="darkblue",xlab = "1/X",ylab = "Frequency",density = 40)
+
+
+```
+
